@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react'
+import { Route, Switch } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+import Header from './components/Header'
+import MyNavLink from './components/MyNavLink'
+export default class App extends Component {
+  render () {
+    return (
+      <div>
+        <div className="row">
+          <div className="col-xs-offset-2 col-xs-8">
+            <Header />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-xs-2 col-xs-offset-2">
+            <div className="list-group">
+              {/* <a className="list-group-item active" href="./about.html">About</a>
+                  <a className="list-group-item" href="./home.html">Home</a> */}
+              <MyNavLink to='/about' title='About'>About</MyNavLink>
+              <MyNavLink to='/home' title='Home'>Home</MyNavLink>
+            </div>
+          </div>
+          <div className="col-xs-6">
+            <div className="panel">
+              <div className="panel-body">
+                <Route path="/about" component={About} />
+                <Route path="/home" component={Home} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 }
-
-export default App;
